@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                       "10 AM",
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
-                    WeatherStatusStackWidget(),
+                    const WeatherStatusStackWidget(),
                     // const Icon(
                     //   Icons.cloud,
                     // ),
