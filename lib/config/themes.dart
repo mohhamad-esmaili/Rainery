@@ -22,7 +22,7 @@ class AppTheme {
       ),
       headlineSmall: TextStyle(
         color: textColors.darkTextcolor,
-        fontSize: 15,
+        fontSize: 18,
       ),
       labelMedium: TextStyle(
         color: textColors.lightSectionTitleTextcolor,

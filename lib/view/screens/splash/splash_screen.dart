@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:provider/provider.dart';
 import 'package:rainery/config/router/router_constants.dart';
-import 'package:rainery/service/weather_service.dart';
+
+import 'package:rainery/view-model/weather_provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -13,27 +15,29 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   bool isVisible = false;
-
   @override
   void initState() {
-    setState(() {
-      isVisible = true;
-    });
+    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {
+          isVisible = true;
+        }));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder(
-        future: WeatherService.getWeather(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              Navigator.of(context).pushReplacementNamed(homeRoute);
-            });
-          }
-          return Center(
+    return Consumer<WeatherProvider>(
+      builder: (context, value, child) {
+        value.setWeather();
+
+        if (value.getLoading) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Future.delayed(const Duration(seconds: 3)).then((value) =>
+                Navigator.of(context).pushReplacementNamed(homeRoute));
+          });
+        }
+
+        return Scaffold(
+          body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -57,9 +61,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ],
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
