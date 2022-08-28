@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 
 import 'package:rainery/utils/align_constants.dart';
 import 'package:rainery/view-model/weather_provider.dart';
+import 'package:rainery/view/screens/home/widgets/appbar_weather_widget.dart';
+import 'package:rainery/view/screens/home/widgets/tomorrow_weather_widget.dart';
 
 import 'package:rainery/view/screens/home/widgets/widget_exporter.dart';
 import 'package:rainery/view/widget/status_widget.dart';
@@ -18,7 +20,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<WeatherProvider>(
       builder: (context, value, child) {
-        log(value.todayWeatherGetter.toString());
         List todayWeather = value.todayWeatherGetter;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
