@@ -50,4 +50,9 @@ class AppTheme {
       unselectedItemColor: utilsColors.darkUnSelectedIconColor,
     ),
   );
+
+  static final darkTheme = ThemeData(
+    fontFamily: 'NotoSans',
+    scaffoldBackgroundColor: mainColors.darkScaffoldBG,
+  );
 }
