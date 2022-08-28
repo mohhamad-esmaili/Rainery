@@ -32,12 +32,12 @@ class TomarrowWeatherRowWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                maxTemp,
+                "$maxTemp°",
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(width: 10),
               Text(
-                minTemp,
+                "$minTemp°",
                 style: AppTheme.infoTextstyle,
               ),
             ],

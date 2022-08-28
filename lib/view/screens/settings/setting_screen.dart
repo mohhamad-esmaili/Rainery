@@ -10,6 +10,7 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Consumer<ThemeProvider>(
             builder: (context, themeNotifier, child) => Switch(

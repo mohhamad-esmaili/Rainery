@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rainery/models/weather_model.dart';
 
 import 'package:rainery/utils/align_constants.dart';
 import 'package:rainery/view-model/weather_provider.dart';
@@ -21,6 +22,8 @@ class HomeScreen extends StatelessWidget {
     return Consumer<WeatherProvider>(
       builder: (context, value, child) {
         List todayWeather = value.todayWeatherGetter;
+        WeatherModel current = value.getWeather;
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -32,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "San Fransisco",
+                        current.timezone,
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       Text(
@@ -54,13 +57,16 @@ class HomeScreen extends StatelessWidget {
                 right: elementAlignment.left,
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   MoreInfoSectionWidget(
-                      icon: CupertinoIcons.drop, title: "data"),
+                      icon: CupertinoIcons.thermometer,
+                      title:
+                          "${current.latitude.toStringAsFixed(0)}-${current.longitude.toStringAsFixed(0)}"),
+                  MoreInfoSectionWidget(
+                      icon: CupertinoIcons.pin_fill, title: current.timezone),
                   MoreInfoSectionWidget(
                       icon: CupertinoIcons.wind,
-                      title: todayWeather[3].toString()),
+                      title: "${todayWeather[3].toString()}km/h"),
                 ],
               ),
             ),
@@ -93,9 +99,6 @@ class HomeScreen extends StatelessWidget {
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
                         const WeatherStatusStackWidget(),
-                        // const Icon(
-                        //   Icons.cloud,
-                        // ),
                         Text(
                           "18°",
                           style: Theme.of(context).textTheme.bodyMedium,
@@ -110,20 +113,20 @@ class HomeScreen extends StatelessWidget {
             const TomarrowWeatherRowWidget(
               title: "Tuesday",
               icon: CupertinoIcons.cloud_rain_fill,
-              maxTemp: "19°",
-              minTemp: "12°",
+              maxTemp: "19",
+              minTemp: "12",
             ),
             const TomarrowWeatherRowWidget(
               title: "Tuesday",
               icon: Icons.cloud,
-              maxTemp: "19°",
-              minTemp: "12°",
+              maxTemp: "19",
+              minTemp: "12",
             ),
             const TomarrowWeatherRowWidget(
               title: "Tuesday",
               icon: Icons.cloud,
-              maxTemp: "19°",
-              minTemp: "12°",
+              maxTemp: "19",
+              minTemp: "12",
             ),
           ],
         );

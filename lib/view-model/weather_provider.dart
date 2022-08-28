@@ -31,6 +31,9 @@ class WeatherProvider extends ChangeNotifier {
   }
 
   setWeather() async {
+    await getLocation();
+    print(lat);
+    print(long);
     _loadedWeather = await WeatherService.getWeather(lat, long);
     fetchDayAndData();
 

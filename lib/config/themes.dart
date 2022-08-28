@@ -22,7 +22,7 @@ class AppTheme {
       ),
       headlineSmall: TextStyle(
         color: textColors.darkTextcolor,
-        fontSize: 18,
+        fontSize: 15,
       ),
       labelMedium: TextStyle(
         color: textColors.lightSectionTitleTextcolor,
@@ -54,5 +54,45 @@ class AppTheme {
   static final darkTheme = ThemeData(
     fontFamily: 'NotoSans',
     scaffoldBackgroundColor: mainColors.darkScaffoldBG,
+
+    // texttheme data
+    textTheme: TextTheme(
+      headlineLarge: TextStyle(
+        color: textColors.lightTextcolor,
+        fontSize: 60,
+      ),
+      headlineMedium: TextStyle(
+        color: textColors.lightTextcolor,
+        fontSize: 20,
+      ),
+      headlineSmall: TextStyle(
+        color: textColors.lightTextcolor,
+        fontSize: 18,
+      ),
+      labelMedium: TextStyle(
+        color: textColors.darkSectionTitleTextcolor,
+        fontSize: 15,
+      ),
+      titleSmall: TextStyle(
+        color: textColors.lightTextcolor,
+        fontSize: 13,
+        fontWeight: FontWeight.w600,
+      ),
+      bodyMedium: TextStyle(
+        color: textColors.lightTextcolor,
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+      ),
+    ),
+    iconTheme: IconThemeData(color: textColors.lightTextcolor),
+    // botttom navigation theme
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      elevation: 0.0,
+      backgroundColor: mainColors.darkScaffoldBG,
+      selectedItemColor: utilsColors.darkSelectedIconColor,
+      unselectedItemColor: utilsColors.darkUnSelectedIconColor,
+    ),
   );
 }
