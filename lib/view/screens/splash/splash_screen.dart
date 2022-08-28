@@ -27,9 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Consumer<WeatherProvider>(
       builder: (context, value, child) {
-        value.setWeather();
-
-        if (value.getLoading) {
+        if (value.getLoading == false) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             Future.delayed(const Duration(seconds: 3)).then((value) =>
                 Navigator.of(context).pushReplacementNamed(homeRoute));

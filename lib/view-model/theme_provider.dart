@@ -12,13 +12,13 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   ThemeProvider() {
-    _isDark = true;
+    _isDark = false;
     loadFromPrefs();
   }
 
   loadFromPrefs() async {
     await _initPrefs();
-    _isDark = prefs.getBool(key) ?? true;
+    _isDark = prefs.getBool(key) ?? false;
     notifyListeners();
   }
 

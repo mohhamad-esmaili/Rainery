@@ -21,16 +21,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ThemeProvider>(builder: (context, themeNotifier, child) {
-      return MaterialApp(
-        title: 'Rainery',
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: themeNotifier.themMode,
-        onGenerateRoute: AppRouter.generateRoute,
-        initialRoute: splashRoute,
-      );
-    });
+    return Consumer<ThemeProvider>(
+      builder: (context, themeNotifier, child) {
+        return MaterialApp(
+          title: 'Rainery',
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: themeNotifier.themMode,
+          onGenerateRoute: AppRouter.generateRoute,
+          initialRoute: splashRoute,
+        );
+      },
+    );
   }
 }
