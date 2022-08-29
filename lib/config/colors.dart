@@ -5,16 +5,19 @@ final TextColors textColors = TextColors();
 final UtilsColors utilsColors = UtilsColors();
 
 class MainColors {
-  final Color lightScaffoldBG = const Color(0xffFDFCF3);
-  final Color darkScaffoldBG = const Color(0xff030708);
+  final Color lightScaffoldBG = const Color(0xffF9F9F3);
+  final Color darkScaffoldBG = const Color(0xff081B24);
 
   final Color lightContainerBG = const Color(0xffF2EFEC);
   final Color darkContainerBG = const Color(0xff423654);
+
+  final Color lightBackgroundColor = const Color(0xffffffff);
+  final Color darkBackgroundColor = const Color(0xff152C39);
 }
 
 class TextColors {
   final Color darkTextcolor = const Color(0xff2E3151);
-  final Color lightTextcolor = const Color(0xffECCDDA);
+  final Color lightTextcolor = const Color(0xffffffff);
 
   final Color lightSectionTitleTextcolor = const Color(0xff7A7799);
   final Color darkSectionTitleTextcolor = const Color(0xff576776);

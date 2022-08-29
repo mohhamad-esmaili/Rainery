@@ -1,4 +1,4 @@
 const String splashRoute = '/splash';
 const String homeRoute = '/home';
-const String favoriteRoute = '/favorite';
+const String searchRoute = '/search';
 const String settingRoute = '/setting';

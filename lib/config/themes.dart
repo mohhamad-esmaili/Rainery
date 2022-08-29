@@ -9,7 +9,7 @@ class AppTheme {
   static final lightTheme = ThemeData(
     fontFamily: 'NotoSans',
     scaffoldBackgroundColor: mainColors.lightScaffoldBG,
-
+    backgroundColor: mainColors.lightBackgroundColor,
     // texttheme data
     textTheme: TextTheme(
       headlineLarge: TextStyle(
@@ -33,6 +33,10 @@ class AppTheme {
         fontSize: 13,
         fontWeight: FontWeight.w600,
       ),
+      bodySmall: TextStyle(
+        color: textColors.darkTextcolor,
+        fontSize: 15,
+      ),
       bodyMedium: TextStyle(
         color: textColors.darkTextcolor,
         fontSize: 18,
@@ -54,7 +58,7 @@ class AppTheme {
   static final darkTheme = ThemeData(
     fontFamily: 'NotoSans',
     scaffoldBackgroundColor: mainColors.darkScaffoldBG,
-
+    backgroundColor: mainColors.darkBackgroundColor,
     // texttheme data
     textTheme: TextTheme(
       headlineLarge: TextStyle(
@@ -67,7 +71,11 @@ class AppTheme {
       ),
       headlineSmall: TextStyle(
         color: textColors.lightTextcolor,
-        fontSize: 18,
+        fontSize: 15,
+      ),
+      bodySmall: TextStyle(
+        color: textColors.darkTextcolor,
+        fontSize: 15,
       ),
       labelMedium: TextStyle(
         color: textColors.darkSectionTitleTextcolor,
@@ -87,12 +95,11 @@ class AppTheme {
     iconTheme: IconThemeData(color: textColors.lightTextcolor),
     // botttom navigation theme
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      elevation: 0.0,
-      backgroundColor: mainColors.darkScaffoldBG,
-      selectedItemColor: utilsColors.darkSelectedIconColor,
-      unselectedItemColor: utilsColors.darkUnSelectedIconColor,
-    ),
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        elevation: 0.0,
+        backgroundColor: mainColors.darkScaffoldBG,
+        selectedItemColor: utilsColors.darkSelectedIconColor,
+        unselectedItemColor: utilsColors.darkUnSelectedIconColor),
   );
 }
