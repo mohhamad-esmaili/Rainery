@@ -28,7 +28,8 @@ class MainScreenState extends State<MainScreen> {
         onTap: _selectScreen,
         items: const [
           BottomNavigationBarItem(icon: Icon(Iconsax.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Iconsax.heart), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Iconsax.search_favorite), label: ''),
           BottomNavigationBarItem(icon: Icon(Iconsax.setting), label: ''),
         ],
       ),

@@ -21,10 +21,10 @@ class SettingScreen extends StatelessWidget {
           ElevatedButton(
               onPressed: () async {
                 await Geolocator.checkPermission();
-                Position position = await Geolocator.getCurrentPosition(
+                await Geolocator.getCurrentPosition(
                     desiredAccuracy: LocationAccuracy.low);
               },
-              child: Text("data")),
+              child: const Text("data")),
         ],
       ),
     );

@@ -17,9 +17,10 @@ class _SplashScreenState extends State<SplashScreen> {
   bool isVisible = false;
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {
-          isVisible = true;
-        }));
+    Future.delayed(const Duration(microseconds: 800))
+        .then((value) => setState(() {
+              isVisible = true;
+            }));
     super.initState();
   }
 
@@ -29,8 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
       builder: (context, value, child) {
         if (value.getLoading == false) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            Future.delayed(const Duration(seconds: 3)).then((value) =>
-                Navigator.of(context).pushReplacementNamed(homeRoute));
+            // Future.delayed(const Duration(seconds: 3)).then((value) =>
+            Navigator.of(context).pushReplacementNamed(homeRoute);
           });
         }
 

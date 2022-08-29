@@ -9,24 +9,20 @@ class MoreInfoSectionWidget extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: Row(
-        children: [
-          Icon(
-            icon,
-            color: utilsColors.subColor,
-            size: 20,
-          ),
-          const SizedBox(width: 5),
-          Flexible(
-            child: Text(
-              title,
-              overflow: TextOverflow.clip,
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-          ),
-        ],
-      ),
+    return Row(
+      children: [
+        Icon(
+          icon,
+          color: utilsColors.subColor,
+          size: 20,
+        ),
+        const SizedBox(width: 5),
+        Text(
+          title,
+          overflow: TextOverflow.clip,
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+      ],
     );
   }
 }
