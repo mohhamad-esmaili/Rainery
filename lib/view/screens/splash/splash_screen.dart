@@ -30,7 +30,6 @@ class _SplashScreenState extends State<SplashScreen> {
       builder: (context, value, child) {
         if (value.getLoading == false) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            // Future.delayed(const Duration(seconds: 3)).then((value) =>
             Navigator.of(context).pushReplacementNamed(homeRoute);
           });
         }

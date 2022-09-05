@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rainery/config/colors.dart';
+import 'package:rainery/models/country_model.dart';
 import 'package:rainery/utils/align_constants.dart';
 import 'package:rainery/view-model/weather_provider.dart';
 
@@ -10,6 +11,8 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
+
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.only(
@@ -18,61 +21,91 @@ class SearchScreen extends StatelessWidget {
           builder: (context, weatherNotifier, child) => Column(
             children: [
               TextField(
-                onChanged: (value) => weatherNotifier.findCoundtry(value),
-                style: Theme.of(context).textTheme.headlineSmall,
+                onChanged: (value) => weatherNotifier.searchCountry(value),
+                style: themeData.textTheme.headlineSmall,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide(
-                      color: Theme.of(context).backgroundColor,
+                      color: themeData.backgroundColor,
                       width: 0,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide(
-                      color: Theme.of(context).backgroundColor,
+                      color: themeData.backgroundColor,
                       width: 0,
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide(
-                      color: Theme.of(context).backgroundColor,
+                      color: themeData.backgroundColor,
                       width: 0,
                     ),
                   ),
-                  focusColor: Theme.of(context).backgroundColor,
-                  fillColor: Theme.of(context).backgroundColor,
+                  focusColor: themeData.backgroundColor,
+                  fillColor: themeData.backgroundColor,
                   filled: true,
                   prefixIconColor: utilsColors.lightSelectedIconColor,
                   hintText: "Search Your Country",
-                  hintStyle: Theme.of(context).textTheme.headlineSmall,
+                  hintStyle: themeData.textTheme.headlineSmall,
                   prefixIcon: Icon(
                     CupertinoIcons.search,
-                    color: utilsColors.lightSelectedIconColor,
+                    color: themeData.iconTheme.color,
                   ),
                 ),
               ),
               const SizedBox(height: 10),
               Expanded(
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                  ),
+                child: ListView.separated(
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 10),
                   physics: const BouncingScrollPhysics(),
                   itemCount: weatherNotifier.searchedListCountries.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final country =
+                    CountryModel country =
                         weatherNotifier.searchedListCountries[index];
-                    return Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Theme.of(context).backgroundColor),
-                      child: Center(
-                        child: Text(country.name),
+                    bool isLatLong =
+                        weatherNotifier.checkLatLong(country.lat, country.long);
+
+                    return ListTile(
+                      onTap: () => weatherNotifier.changeCurrentCountry(
+                          context, country.lat, country.long, country.name),
+                      tileColor: isLatLong
+                          ? Colors.green[300]
+                          : themeData.backgroundColor,
+                      minVerticalPadding: 10,
+                      title: Text(
+                        country.name,
+                        style: themeData.textTheme.headlineSmall,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          color: themeData.backgroundColor,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      trailing: Container(
+                        width: 25,
+                        height: 25,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                          border: Border.all(
+                            color: Colors.grey,
+                            width: 1.5,
+                          ),
+                        ),
+                        child: isLatLong
+                            ? const Center(
+                                child: Icon(
+                                  Icons.check_rounded,
+                                  color: Colors.black,
+                                ),
+                              )
+                            : null,
                       ),
                     );
                   },

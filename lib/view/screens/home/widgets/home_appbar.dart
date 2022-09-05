@@ -4,8 +4,8 @@ import 'package:rainery/models/weather_model.dart';
 import 'package:rainery/models/weathercode_model.dart';
 import 'package:rainery/utils/align_constants.dart';
 import 'package:rainery/view-model/weather_provider.dart';
-import 'package:rainery/view/screens/home/widgets/appbar_weather.dart';
-import 'package:rainery/view/widget/status_widget.dart';
+import 'package:rainery/view/screens/widget/weather_status.dart';
+import 'package:rainery/view/screens/widget/status_widget.dart';
 
 class HomeAppbarRowWidget extends StatelessWidget {
   const HomeAppbarRowWidget({Key? key}) : super(key: key);
@@ -13,10 +13,12 @@ class HomeAppbarRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WeatherProvider weatherProvider = Provider.of<WeatherProvider>(context);
-    WeatherModel weatherModel = weatherProvider.getWeather;
+    WeatherModel weatherModel = weatherProvider.getLoadedWeather;
     List todayWeather = weatherProvider.todayWeather;
+
     WeatherCodeModel? weatherCodeModel =
-        weatherProvider.getWeatherStack(todayWeather[0]);
+        weatherProvider.getWeatherCode(todayWeather[0]);
+
     return Row(
       children: [
         Padding(
@@ -32,13 +34,17 @@ class HomeAppbarRowWidget extends StatelessWidget {
                 "${todayWeather[1].toString()}°",
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
-              WeatherStatusWidget(title: weatherCodeModel!.name),
+              WeatherStatusWidget(title: weatherCodeModel.name),
             ],
           ),
         ),
         const Spacer(),
-        AppbarWeatherStatusWidget(
+        WeatherStatusIconWidget(
           iconData: weatherCodeModel.iconData,
+          iconSize: 250,
+          sizedBoxWidth: 170,
+          shadowOn: true,
+          paddingLeft: 20,
         )
       ],
     );

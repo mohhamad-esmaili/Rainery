@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:rainery/models/weathercode_model.dart';
 import 'package:rainery/utils/align_constants.dart';
 import 'package:rainery/view-model/weather_provider.dart';
-import 'package:rainery/view/widget/weathercode_stack.dart';
+import 'package:rainery/view/screens/widget/weather_status.dart';
 
 class TodayListviewBuilderWidget extends StatelessWidget {
   const TodayListviewBuilderWidget({Key? key}) : super(key: key);
@@ -13,7 +13,6 @@ class TodayListviewBuilderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     WeatherProvider weatherProvider = Provider.of<WeatherProvider>(context);
     List hourlyWeather = weatherProvider.hourlyWeather;
-
     return Expanded(
       child: ListView.builder(
         itemCount: hourlyWeather.length,
@@ -24,7 +23,7 @@ class TodayListviewBuilderWidget extends StatelessWidget {
           String time = DateFormat.jm().format(hourlyWeather[index][0]);
           double temp = hourlyWeather[index][1];
           WeatherCodeModel? weatherCodeModel =
-              weatherProvider.getWeatherStack(hourlyWeather[index][2]);
+              weatherProvider.getWeatherCode(hourlyWeather[index][2]);
           return Container(
             padding: EdgeInsets.only(
               left: elementAlignment.left,
@@ -32,12 +31,17 @@ class TodayListviewBuilderWidget extends StatelessWidget {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   time.toString(),
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
-                WeathercodeStackWidget(iconData: weatherCodeModel!.iconData),
+                WeatherStatusIconWidget(
+                  iconData: weatherCodeModel.iconData,
+                  iconSize: 30,
+                  paddingLeft: 0,
+                ),
                 Text(
                   "$temp°",
                   style: Theme.of(context).textTheme.bodyMedium,
