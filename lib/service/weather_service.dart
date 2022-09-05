@@ -1,4 +1,3 @@
-// https://api.open-meteo.com/v1/forecast?latitude=35.7061&longitude=51.4358&hourly=weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,windspeed_10m_max&timezone=auto&past_days=7
 import 'dart:convert';
 import "package:http/http.dart" as http;
 import 'package:rainery/models/weather_model.dart';
@@ -15,7 +14,6 @@ class WeatherService {
             WeatherModel.fromJson(jsonDecode(response.body));
 
         // print(DateTime.parse(ss));
-
         return weatherModel;
       } else {
         Future.error("error occured in connection");
