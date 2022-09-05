@@ -1,7 +1,7 @@
 import 'package:rainery/models/country_model.dart';
 
 List<CountryModel> countriesConstants = [
-  CountryModel("Berlin", "Europe", 35.7061, 51.4358),
+  CountryModel("Berlin", "Europe", 52.5235, 13.4115),
   CountryModel("Paris", "Europe", 48.8567, 2.3510),
   CountryModel("London", "Europe", 51.5002, -0.1262),
   CountryModel("Madrid", "Europe", 40.4167, -3.7033),
