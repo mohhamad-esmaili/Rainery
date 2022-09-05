@@ -11,7 +11,7 @@ class MainColors {
   final Color lightContainerBG = const Color(0xffF2EFEC);
   final Color darkContainerBG = const Color(0xff423654);
 
-  final Color lightBackgroundColor = const Color(0xffffffff);
+  final Color lightBackgroundColor = const Color.fromARGB(255, 236, 236, 236);
   final Color darkBackgroundColor = const Color(0xff152C39);
 }
 

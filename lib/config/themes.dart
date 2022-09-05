@@ -18,7 +18,7 @@ class AppTheme {
       ),
       headlineMedium: TextStyle(
         color: textColors.darkTextcolor,
-        fontSize: 20,
+        fontSize: 19,
       ),
       headlineSmall: TextStyle(
         color: textColors.darkTextcolor,
@@ -52,6 +52,11 @@ class AppTheme {
       backgroundColor: mainColors.lightScaffoldBG,
       selectedItemColor: utilsColors.lightSelectedIconColor,
       unselectedItemColor: utilsColors.darkUnSelectedIconColor,
+    ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: mainColors.lightScaffoldBG,
+      elevation: 0,
+      iconTheme: IconThemeData(color: textColors.darkTextcolor),
     ),
   );
 
@@ -95,11 +100,17 @@ class AppTheme {
     iconTheme: IconThemeData(color: textColors.lightTextcolor),
     // botttom navigation theme
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        elevation: 0.0,
-        backgroundColor: mainColors.darkScaffoldBG,
-        selectedItemColor: utilsColors.darkSelectedIconColor,
-        unselectedItemColor: utilsColors.darkUnSelectedIconColor),
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      elevation: 0.0,
+      backgroundColor: mainColors.darkScaffoldBG,
+      selectedItemColor: utilsColors.darkSelectedIconColor,
+      unselectedItemColor: utilsColors.darkUnSelectedIconColor,
+    ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: mainColors.darkScaffoldBG,
+      elevation: 0,
+      iconTheme: IconThemeData(color: textColors.lightTextcolor),
+    ),
   );
 }
