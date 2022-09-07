@@ -13,7 +13,6 @@ class WeatherService {
         final WeatherModel weatherModel =
             WeatherModel.fromJson(jsonDecode(response.body));
 
-        // print(DateTime.parse(ss));
         return weatherModel;
       } else {
         Future.error("error occured in connection");

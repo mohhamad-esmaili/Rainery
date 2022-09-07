@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
@@ -50,6 +52,7 @@ class WeatherProvider extends ChangeNotifier {
         await WeatherService.getWeather(_currentLat, _currentLong);
     fetchDayAndData(_weatherFromApi!);
     setLoading = false;
+
     notifyListeners();
   }
 

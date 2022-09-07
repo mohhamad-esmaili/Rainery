@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rainery/config/colors.dart';
 
 class AppTheme {
@@ -7,7 +8,7 @@ class AppTheme {
     fontSize: 18,
   );
   static final lightTheme = ThemeData(
-    fontFamily: 'NotoSans',
+    fontFamily: GoogleFonts.notoSans().fontFamily,
     scaffoldBackgroundColor: mainColors.lightScaffoldBG,
     backgroundColor: mainColors.lightBackgroundColor,
     // texttheme data
@@ -17,9 +18,9 @@ class AppTheme {
         fontSize: 60,
       ),
       headlineMedium: TextStyle(
-        color: textColors.darkTextcolor,
-        fontSize: 19,
-      ),
+          color: textColors.darkTextcolor,
+          fontSize: 19,
+          overflow: TextOverflow.ellipsis),
       headlineSmall: TextStyle(
         color: textColors.darkTextcolor,
         fontSize: 15,
@@ -61,7 +62,7 @@ class AppTheme {
   );
 
   static final darkTheme = ThemeData(
-    fontFamily: 'NotoSans',
+    fontFamily: GoogleFonts.notoSans().fontFamily,
     scaffoldBackgroundColor: mainColors.darkScaffoldBG,
     backgroundColor: mainColors.darkBackgroundColor,
     // texttheme data
@@ -73,6 +74,7 @@ class AppTheme {
       headlineMedium: TextStyle(
         color: textColors.lightTextcolor,
         fontSize: 20,
+        overflow: TextOverflow.ellipsis,
       ),
       headlineSmall: TextStyle(
         color: textColors.lightTextcolor,

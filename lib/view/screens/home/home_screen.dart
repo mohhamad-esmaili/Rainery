@@ -53,6 +53,13 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const TodayListviewBuilderWidget(),
+            Padding(
+              padding: elementAlignment,
+              child: Text(
+                "Future weather",
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+            ),
             SizedBox(
               height: 200,
               child: ListView.builder(
